@@ -69,13 +69,15 @@ static const char *rofi[]     = { "rofi", "-show", "run", "-font Cousine Nerd Fo
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "wezterm", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
+static const char *extmonitor[] = { "xrandr", "--output", "eDP-1", "--off", "--output", "DP-1", "--off", "--off", "--output", "DP-3", "--mode",  "1920x1080", "--pos",  "0x0", "--rotate", "normal", NULL };
 static const char *rofipass[] = { "rofipass", "gui", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = rofid } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_p, spawn,          {.v = rofipass } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = rofipass } },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = extmonitor } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
