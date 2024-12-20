@@ -15,7 +15,7 @@ static const char col_gray2[]       = "#ECE1D7";
 //font color
 static const char col_gray3[]       = "#ECE1D7";
 //current tag and current window font color
-static const char col_gray4[]       = "#7F91B2";
+static const char col_gray4[]       = "#E49B5D";
 //topbar second color and active window border color
 static const char col_cyan[]        = "#34302C";
 static const char *colors[][3]      = {
@@ -25,8 +25,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-// static const char *tags[] = { "󰲠", "󰲢", "󰲤", "󰲦", "󰲨", "󰲪", "󰲬" };
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -63,6 +62,8 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#define STATUSBAR "dwmblocks"
+
 /* commands */
 static const char *rofid[]     = { "rofi", "-show", "drun", "-show-icons", "-font Cousine Nerd Font 10", NULL };
 static const char *rofi[]     = { "rofi", "-show", "run", "-font Cousine Nerd Font 10", NULL };
@@ -83,7 +84,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
@@ -94,6 +95,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -126,7 +128,9 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
