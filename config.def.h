@@ -17,14 +17,13 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "MonaspaceNeon:size=10" };
 static const char dmenufont[]       = "CousineNerdFont:size=10";
-//background color
 static const char col_gray1[]       = "#292522";
 //inactive windows border color
 static const char col_gray2[]       = "#ECE1D7";
 //font color
 static const char col_gray3[]       = "#ECE1D7";
 //current tag and current window font color
-static const char col_gray4[]       = "#7F91B2";
+static const char col_gray4[]       = "#E49B5D";
 //topbar second color and active window border color
 static const char col_cyan[]        = "#34302C";
 static const char *colors[][3]      = {
