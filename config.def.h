@@ -41,8 +41,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Chromium",     NULL,       NULL,       1 << 3,            0,           -1 },
+	{ "mpv",  NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Slack",  NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "Viber",  NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "google-chrome",  NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -57,7 +61,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|M|",      centeredmaster },
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
@@ -67,9 +73,7 @@ static const Layout layouts[] = {
 	{ "###",      nrowgrid },
 	{ "---",      horizgrid },
 	{ ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
@@ -113,26 +117,27 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY|Mod1Mask,              XK_u,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_u,      incrgaps,       {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_i,      incrigaps,      {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_o,      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_o,      incrogaps,      {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_6,      incrihgaps,     {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_7,      incrivgaps,     {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_8,      incrohgaps,     {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_9,      incrovgaps,     {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
+	{ MODKEY|Mod1Mask|ControlMask,    XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
