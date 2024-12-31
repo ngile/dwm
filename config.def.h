@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "wezterm"
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -96,7 +99,7 @@ static const char *rofi[]     = { "rofi", "-show", "run", "-font Cousine Nerd Fo
 static const char *rofis[]     = { "rofi", "-show", "ssh", "-font JetBrainsMono Nerd Font 10", NULL };
 // static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "wezterm", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *rofipass[] = { "rofipass", "gui", NULL };
 static const char *extmonitor[] = { "sb-monitor",NULL };
@@ -123,8 +126,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY|Mod1Mask,              XK_u,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod1Mask|ControlMask,    XK_u,      incrgaps,       {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_u,      incrgaps,       {.i = +3 } },
+	{ MODKEY|Mod1Mask|ControlMask,  XK_u,      incrgaps,       {.i = -3 } },
 	{ MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
 	{ MODKEY|Mod1Mask|ControlMask,    XK_i,      incrigaps,      {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_o,      incrogaps,      {.i = +1 } },
