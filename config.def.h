@@ -1,7 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "wezterm"
+// #define TERMINAL "wezterm"
+#define TERMINAL "ghostty"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -18,8 +19,11 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "MonaspaceNeon:size=10" };
-static const char dmenufont[]       = "CousineNerdFont:size=10";
+// static const char *fonts[]          = { "Iosevka Curly:size=10" };
+// static const char *fonts[]          = { "Iosevka Slab Expanded:size=10" };
+// static const char dmenufont[]       = "Iosevka Slab Expanded:size=10";
+static const char *fonts[]          = { "Monaspace Krypton NF:size=10", "Hack Nerd Font Propo:size=11", "Iosevka Term:size=11" };
+static const char dmenufont[]       = "Monaspace Krypton NF:size=10";
 static const char col_gray1[]       = "#292522";
 //inactive windows border color
 static const char col_gray2[]       = "#ECE1D7";
@@ -102,6 +106,7 @@ static const char *rofis[]     = { "rofi", "-show", "ssh", "-font JetBrainsMono 
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *rofipass[] = { "rofipass", "gui", NULL };
+static const char *bookmarks[] = { "sb-qbookmarks",NULL };
 static const char *extmonitor[] = { "sb-monitor",NULL };
 static const char *sblock[] = { "sb-lock", NULL };
 static const char *sbshutdown[] = { "sb-shutdown", NULL };
@@ -114,6 +119,7 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_x,      spawn,          {.v = sbshutdown } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = rofipass } },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = bookmarks } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = extmonitor } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
